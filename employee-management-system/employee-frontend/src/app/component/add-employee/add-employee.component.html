@@ -1,0 +1,40 @@
+<div class="row">
+    <form [formGroup]="registerForm">
+        <div class="form-group">
+            <label>Name</label>
+            <input required type="text" [class.is-invalid]="registerForm.get('name').invalid&&registerForm.get('name').touched" class="form-control" formControlName="name"/>
+            <small [class.d-none]="registerForm.get('name').valid||registerForm.get('name').untouched" class="text-danger">
+                **Enter the name
+            </small>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input required [class.is-invalid]="registerForm.get('email').invalid&&registerForm.get('email').touched" type="text" class="form-control" formControlName="email"/>
+            <div *ngIf="registerForm.get('email').errors&&(registerForm.get('email').invalid&&registerForm.get('email').touched)">
+                <small *ngIf="registerForm.get('email').errors.required" class="text-danger">**Enter the email</small>
+                <small *ngIf="registerForm.get('email').errors.pattern" class="text-danger">**Enter the valid email</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>phoneNumber</label>
+            <input required type="text" [class.is-invalid]="registerForm.get('phoneNumber').invalid&&registerForm.get('phoneNumber').touched" class="form-control" formControlName="phoneNumber"/>
+            <small [class.d-none]="registerForm.get('phoneNumber').valid||registerForm.get('phoneNumber').untouched" class="text-danger">
+                **Enter the phoneNumber
+            </small>
+        </div>
+        <div class="form-group">
+            <label>imageUrl</label>
+            <input type="text" class="form-control" formControlName="imageUrl"/>
+ 
+        </div>
+        <div class="form-group">
+            <label>CodeNumber</label>
+            <input required type="text" [class.is-invalid]="registerForm.get('codeNumber').invalid&&registerForm.get('codeNumber').touched" class="form-control" formControlName="codeNumber"/>
+            <small [class.d-none]="registerForm.get('codeNumber').valid||registerForm.get('codeNumber').untouched" class="text-danger">
+                **Enter the name
+            </small>
+        </div><br>
+        <button class="btn btn-primary" (click)="addEmployee()">Submit</button>
+        <button class="btn btn-secondary"(click)="loadDataFromStorage()">Load Data</button>
+    </form>
+</div>
